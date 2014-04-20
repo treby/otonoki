@@ -1,4 +1,8 @@
 Otonoki::Application.routes.draw do
+  resources :groups
+  resources :topics, :except => [:index] do
+    resources :comments, :except => [:index, :show]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

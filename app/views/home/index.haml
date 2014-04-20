@@ -1,7 +1,44 @@
-%h1= SERVICE_NAME
+.container
+  .panel-group#accordion
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title
+          %a{href: '#collapseComments', data: {toggle: 'collapse', parent: '#accordion'}}
+            %span.glyphicon.glyphicon-plus-sign
+            Comments
+      %ul.list-group.panel-collapse.collapse.in#collapseComments
+        %li.list-group-item
+          A comment
+    -#.panel.panel-default
+      .panel-heading
+        %h4.panel-title
+          %a{href: '#collapseEntries', data: {toggle: 'collapse', parent: '#accordion'}}
+            %span.glyphicon.glyphicon-plus-sign
+            Entries
+      %ul.list-group.panel-collapse.collapse.in#collapseEntries
+        %li.list-group-item
+          A entry
+        %li.list-group-item
+          .text-right
+            %button.btn.btn-default.btn-sm{type: 'button', style: 'margin: 0px;'}
+              More
 
-- if current_user
-  = current_user.name
-  = link_to 'ログアウト', logout_path
-- else
-  = link_to 'ログイン', '/auth/twitter'
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title
+          %a{href: '#collapseGroups', data: {toggle: 'collapse', parent: '#accordion'}}
+            %span.glyphicon.glyphicon-plus-sign
+            Groups
+      %ul.list-group.panel-collapse.collapse#collapseGroups
+        %li.list-group-item
+          A group
+        %li.list-group-item
+          .text-right
+            %button.btn.btn-default.btn-sm{type: 'button', style: 'margin: 0px;'}
+              Search
+            %button.btn.btn-default.btn-sm{type: 'button', style: 'margin: 0px;'}
+              Create
+:javascript
+  $('#accordion').collapse({
+    toggle: false
+  });
