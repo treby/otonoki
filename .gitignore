@@ -16,3 +16,4 @@
 /tmp
 
 /config/initializers/twitter_secret.rb
+/public/assets/
