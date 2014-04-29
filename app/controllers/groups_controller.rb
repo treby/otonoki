@@ -19,4 +19,8 @@ class GroupsController < ApplicationController
 
   def destroy
   end
+
+  def members
+    
+  end
 end

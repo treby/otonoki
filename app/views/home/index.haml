@@ -1,6 +1,18 @@
 .container
   .panel-group#accordion
-    .panel.panel-default
+    - if @current_user.blank?
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{href: '#collapseAbout', data: {toggle: 'collapse', parent: '#accordion'}}
+              %span.glyphicon.glyphicon-plus-sign
+              About
+        %ul.list-group.panel-collapse.collapse#collapseAbout
+          %li.list-group-item
+            ミリマスの情報収集サイトです。
+            = link_to 'Twitterログイン', '/auth/twitter'
+            すると、使える機能が増えます。
+    -#.panel.panel-default
       .panel-heading
         %h4.panel-title
           %a{href: '#collapseComments', data: {toggle: 'collapse', parent: '#accordion'}}
@@ -9,7 +21,7 @@
       %ul.list-group.panel-collapse.collapse.in#collapseComments
         %li.list-group-item
           A comment
-    -#.panel.panel-default
+    .panel.panel-default
       .panel-heading
         %h4.panel-title
           %a{href: '#collapseEntries', data: {toggle: 'collapse', parent: '#accordion'}}
@@ -20,24 +32,27 @@
           A entry
         %li.list-group-item
           .text-right
-            %button.btn.btn-default.btn-sm{type: 'button', style: 'margin: 0px;'}
-              More
+            = link_to entries_path do
+              %button.btn.btn-default.btn-sm{type: 'button', style: 'margin: 0px;'}
+                More
 
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title
-          %a{href: '#collapseGroups', data: {toggle: 'collapse', parent: '#accordion'}}
-            %span.glyphicon.glyphicon-plus-sign
-            Groups
-      %ul.list-group.panel-collapse.collapse#collapseGroups
-        %li.list-group-item
-          A group
-        %li.list-group-item
-          .text-right
-            %button.btn.btn-default.btn-sm{type: 'button', style: 'margin: 0px;'}
-              Search
-            %button.btn.btn-default.btn-sm{type: 'button', style: 'margin: 0px;'}
-              Create
+    - if @current_user.present?
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{href: '#collapseGroups', data: {toggle: 'collapse', parent: '#accordion'}}
+              %span.glyphicon.glyphicon-plus-sign
+              My Groups
+        %ul.list-group.panel-collapse.collapse#collapseGroups
+          - @group_list.each do |group|
+            %li.list-group-item
+              = link_to group.display_name, group_path(group)
+          -#%li.list-group-item
+            .text-right
+              %button.btn.btn-default.btn-sm{type: 'button', style: 'margin: 0px;'}
+                Search
+              %button.btn.btn-default.btn-sm{type: 'button', style: 'margin: 0px;'}
+                Create
 :javascript
   $('#accordion').collapse({
     toggle: false

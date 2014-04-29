@@ -1,18 +1,21 @@
 Otonoki::Application.routes.draw do
-  resources :groups
-  resources :topics, :except => [:index] do
-    resources :comments, :except => [:index, :show]
-  end
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  get 'settings', to: 'home#settings'
+  get 'entries', to: 'home#entries'
 
-  # You can have the root of your site routed with "root"
-  root 'home#index'
-  get 'home/index'
+  resources :groups do
+    resources :topics do
+      resources :comments, :except => [:index, :show]
+    end
+
+    get 'members'
+  end
+
+  # For twitter login
   get '/auth/:provider/callback', to: 'sessions#callback'
   post '/auth/:provider/callback', to: 'sessions#callback'
   get '/logout' => 'sessions#destroy', as: :logout
 
+  root 'home#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
