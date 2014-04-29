@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:id])
   end
 
   def new
@@ -21,6 +22,6 @@ class GroupsController < ApplicationController
   end
 
   def members
-    
+    @group = Group.find(params[:group_id])
   end
 end

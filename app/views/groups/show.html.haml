@@ -1,2 +1,3 @@
-%h1 
-%p Find me in app/views/group/show.html.haml
+%h1= @group.display_name
+
+= link_to 'members', group_members_path(@group.id)

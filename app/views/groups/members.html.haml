@@ -1,2 +1,4 @@
-%h1 Group#show
-%p Find me in app/views/group/show.html.haml
+- @group.users.each do |user|
+  = link_to 'http://twitter.com/' + user.screen_name do
+    = user.name
+  <br />
