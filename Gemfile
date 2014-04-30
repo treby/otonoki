@@ -19,6 +19,11 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+# for entry check
+gem 'feedjira'
+gem 'kaminari'
+gem 'whenever', require: false
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'

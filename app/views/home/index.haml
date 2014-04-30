@@ -28,8 +28,12 @@
             %span.glyphicon.glyphicon-plus-sign
             Entries
       %ul.list-group.panel-collapse.collapse.in#collapseEntries
-        %li.list-group-item
-          A entry
+        - @entry_list.each do |entry|
+          %li.list-group-item
+            = link_to entry.title, entry.url, target: '_blank'
+            %small
+              \-
+              = link_to entry.feed.title, entry.feed.url
         %li.list-group-item
           .text-right
             = link_to entries_path do
