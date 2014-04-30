@@ -1,4 +1,15 @@
-- @group.users.each do |user|
-  = link_to 'http://twitter.com/' + user.screen_name do
-    = user.name
-  <br />
+.container
+  %ol.breadcrumb
+    %li
+      = link_to 'Home', root_path
+    %li Groups
+    %li= link_to @group.display_name, group_path(@group)
+    %li.active members
+
+.container
+  .panel.panel-default
+    .panel-body
+      - @group.users.each do |user|
+        = link_to 'http://twitter.com/' + user.screen_name do
+          = user.name
+        <br />

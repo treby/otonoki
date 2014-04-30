@@ -1,14 +1,17 @@
 .container
-  .row
-    .col-md-9
-      -#.text-center
-        = paginate @entry_list
-      %ul.list-group
-        -# @entry_list.each do |entry|
-          %li.list-group-item
-            = link_to entry.title, entry.url, target: '_blank'
-            %small
-              \-
-              = link_to entry.feed.title, feed_path(entry.feed.id)
-      -#.text-center
-        = paginate @entry_list
+  %ol.breadcrumb
+    %li
+      = link_to 'Home', root_path
+    %li.active Entries
+.container
+  -#.text-center
+    = paginate @entry_list
+  %ul.list-group
+    -# @entry_list.each do |entry|
+      %li.list-group-item
+        = link_to entry.title, entry.url, target: '_blank'
+        %small
+          \-
+          = link_to entry.feed.title, feed_path(entry.feed.id)
+  -#.text-center
+    = paginate @entry_list

@@ -1,1 +1,15 @@
-設定だよー
+.container
+  %ol.breadcrumb
+    %li
+      = link_to 'Home', root_path
+    %li.active Settings
+
+.container
+  .panel.panel-default
+    .panel-body
+      = form_for @user, html: { role: 'form' } do |f|
+        .form-group
+          = f.label :name, '表示名'
+          = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.submit '保存する', class: 'btn btn-primary btn-lg btn-block'

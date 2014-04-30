@@ -4,5 +4,6 @@ class HomeController < ApplicationController
   end
 
   def settings
+    @user = User.find(current_user.id)
   end
 end

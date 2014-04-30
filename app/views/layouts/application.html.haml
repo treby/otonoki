@@ -40,6 +40,11 @@
                   %span.glyphicon.glyphicon-log-out
                   Login
     .container
+      - flash.each do |name, msg|
+        .container
+          %div{class: "alert alert-#{name == :notice ? 'success' : 'error'} alert-dismissable"}
+            %button.close{type: 'button', data: {dismiss: 'alert'}, aria: {hidden: true}} &times;
+            =content_tag :div, msg, id: "flash_#{name}" if msg.is_a?(String)
       .row-fluid
         .span12
           = yield
