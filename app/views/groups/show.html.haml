@@ -1,11 +1,14 @@
 .container
   %ol.breadcrumb
-    %li
-      = link_to 'Home', root_path
+    %li= link_to 'Home', root_path
     %li Groups
     %li.active= @group.display_name
 
 .container
   .panel.panel-default
+    .panel-heading
+      = @group.display_name
     .panel-body
-      = link_to 'members', group_members_path(@group.id)
+      %p= @group.description
+    %ul.list-group.text-right
+      = link_to 'メンバーを見る', group_members_path(@group.id), class: 'list-group-item'

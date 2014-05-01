@@ -12,4 +12,10 @@
           = f.label :name, '表示名'
           = f.text_field :name, class: 'form-control'
         .form-group
+          = f.label :profile_url, 'ミリマスのURL'
+          = f.text_field :profile_url, class: 'form-control'
+        .form-group
+          = f.label :external_url, '外部URL'
+          = f.text_field :external_url, class: 'form-control'
+        .form-group
           = f.submit '保存する', class: 'btn btn-primary btn-lg btn-block'

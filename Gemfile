@@ -23,6 +23,7 @@ gem 'omniauth-twitter'
 gem 'feedjira'
 gem 'kaminari'
 gem 'whenever', require: false
+gem "validate_url"
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
