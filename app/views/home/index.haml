@@ -1,17 +1,5 @@
 .container
   .panel-group#accordion
-    - if @current_user.blank?
-      .panel.panel-default
-        .panel-heading
-          %h4.panel-title
-            %a{href: '#collapseAbout', data: {toggle: 'collapse', parent: '#accordion'}}
-              %span.glyphicon.glyphicon-plus-sign
-              About
-        %ul.list-group.panel-collapse.collapse#collapseAbout
-          %li.list-group-item
-            ミリマスの情報収集サイトです。
-            = link_to 'Twitterログイン', '/auth/twitter'
-            すると、使える機能が増えます。
     -#.panel.panel-default
       .panel-heading
         %h4.panel-title

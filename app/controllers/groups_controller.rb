@@ -25,5 +25,8 @@ class GroupsController < ApplicationController
 
   def members
     @group = Group.find(params[:group_id])
+    until @group.users.include?(current_user)
+      redirect_to root_path, flash: {error: 'グループに属していないようです。'} and return
+    end
   end
 end
