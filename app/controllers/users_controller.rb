@@ -1,3 +1,4 @@
+# encoding: utf-8
 class UsersController < ApplicationController
   def update
     current_user.name = params[:user][:name]
