@@ -2,7 +2,11 @@
   %ol.breadcrumb
     %li
       = link_to 'Home', root_path
-    %li.active Entries
+    - if @entry_list.current_page == 1
+      %li.active Entries
+    - else
+      %li Entries
+      %li.active= @entry_list.current_page
 .container
   .text-center
     = paginate @entry_list
