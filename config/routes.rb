@@ -1,5 +1,6 @@
 Otonoki::Application.routes.draw do
   get 'settings', to: 'home#settings'
+  get 'entries/:page', to: 'home#entries'
   get 'entries', to: 'home#entries'
   
   resources :users, only: :update
