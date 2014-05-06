@@ -17,6 +17,6 @@
             - else
               = user.name
           .col-lg-1.col-md-2.col-sm-1.text-right
-            = link_to 'twitter', 'http://twitter.com/' + user.screen_name, target: :blank, class: 'btn btn-info'
+            = link_to 'twitter', 'http://twitter.com/' + user.screen_name, target: :blank, class: 'btn btn-info' if user.screen_name.present?
           .col-lg-1.col-md-2.col-sm-1.text-right
             = link_to 'Web', user.external_url, target: :blank, class: 'btn btn-default' if user.external_url.present?
