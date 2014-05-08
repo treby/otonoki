@@ -9,4 +9,17 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Otonoki::Application.config.secret_key_base = '0d4fd7f52f641f2c1104935857bef54434bc144def3e877bb2a7bf4cb3b55557ef40570fcda235f006e7f1d144539b7ba130ebcec1a35bc239c3090e25c34981'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    File.read(token_file).chomp
+  else
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Otonoki::Application.config.secret_key_base = secure_token

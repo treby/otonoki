@@ -17,3 +17,6 @@
 
 /config/initializers/twitter_secret.rb
 /public/assets/
+
+# secure_token is secret
+.secret
