@@ -10,4 +10,8 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  def failure
+    redirect_to root_path, flash: {error: '確認に失敗しました'}
+  end
 end

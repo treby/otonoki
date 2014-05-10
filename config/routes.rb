@@ -17,6 +17,7 @@ Otonoki::Application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#callback'
   post '/auth/:provider/callback', to: 'sessions#callback'
   get '/logout' => 'sessions#destroy', as: :logout
+  get '/auth/failure', to: 'sessions#failure'
 
   root 'home#index'
   # Example of regular route:
