@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @group_list = current_user.present? ? current_user.groups : []
-    @entry_list = Entry.order('id desc').limit(10)
+    @entry_list = Entry.order('id desc').limit(30)
   end
 
   def settings
